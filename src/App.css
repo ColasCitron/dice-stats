@@ -40,7 +40,11 @@
 }
 
 .newDice{
-  background-color: #ffffff;
+  background-color: #1C7293;
+  color: white;
+  min-height: 5vh;
+  min-width: 5vh;
+  border-radius: 20px
 }
 
 @keyframes App-logo-spin {
