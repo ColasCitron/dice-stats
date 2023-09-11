@@ -56,12 +56,12 @@ function DiceBoard()  {
   return (
     <div className='diceBoard'>
       <div className='diceList'>
-        <button className ="newDice" onClick={() => newDice(4)}>d4</button>
-        <button className ="newDice" onClick={() => newDice(6)}>d6</button>
-        <button className ="newDice" onClick={() => newDice(8)}>d8</button>
-        <button className ="newDice" onClick={() => newDice(10)}>d10</button>
-        <button className ="newDice" onClick={() => newDice(12)}>d12</button>
-        <button className ="newDice" onClick={() => newDice(20)}>d20</button>
+        <button className ="newDice d4" onClick={() => newDice(4)}>d4</button>
+        <button className ="newDice d6" onClick={() => newDice(6)}>d6</button>
+        <button className ="newDice d8" onClick={() => newDice(8)}>d8</button>
+        <button className ="newDice d10" onClick={() => newDice(10)}>d10</button>
+        <button className ="newDice d12" onClick={() => newDice(12)}>d12</button>
+        <button className ="newDice d20" onClick={() => newDice(20)}>d20</button>
       </div>
       <div>{diceList.map((diceList, index) => (
           <button className="dice" onClick={() => removeDice(index)}>{diceList}</button>
