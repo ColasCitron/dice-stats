@@ -8,23 +8,27 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  VerticalBarSeries
+  VerticalBarSeries,
 } from 'react-vis';
 
-function DiceBoard()  {
-  const [diceList, setList] = useState([]);
-  const [data, setData] = useState([]);
 
+//Main function
+function DiceBoard()  {
+  const [diceList, setList] = useState([]); //state storing dice to roll
+  const [data, setData] = useState([]); //state storing probabilty data to display
+
+  //add clicked dice to dice list state
   function newDice(fname) {
     setList([...diceList, fname]);
-
   }
 
+  //remove clicked dice to dice list state
   function removeDice(index) {
     const newList = diceList.filter((_,i) => i !== index);
     setList(newList);
   }
 
+  //convert dice side number to correct svg to display
   function displayDice(dicef){
     if (dicef === 4){return 0};
     if (dicef === 6){return 1};
@@ -34,6 +38,7 @@ function DiceBoard()  {
     if (dicef === 20){return 5};
   }
 
+  //dice probability calculator
   function calculateGraph() {
     function dice(){
         function d(i){return Math.ceil(i*Math.random())};
@@ -63,6 +68,7 @@ function DiceBoard()  {
     return tableresults;
   }
 
+  //components render function
   return (
     <div className='diceBoard'>
       <div className='diceList'>
@@ -97,6 +103,7 @@ function DiceBoard()  {
   )
 }
 
+//main page render function
 export default function App() {
   return (
     <div className="App">
