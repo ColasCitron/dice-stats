@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
+import svgArr from './svg/svgList';
 import './App.css';
 import '../node_modules/react-vis/dist/style.css';
 import {
@@ -17,11 +17,21 @@ function DiceBoard()  {
 
   function newDice(fname) {
     setList([...diceList, fname]);
+
   }
 
   function removeDice(index) {
     const newList = diceList.filter((_,i) => i !== index);
     setList(newList);
+  }
+
+  function displayDice(dicef){
+    if (dicef === 4){return 0};
+    if (dicef === 6){return 1};
+    if (dicef === 8){return 2};
+    if (dicef === 10){return 3};
+    if (dicef === 12){return 4;};
+    if (dicef === 20){return 5};
   }
 
   function calculateGraph() {
@@ -56,16 +66,14 @@ function DiceBoard()  {
   return (
     <div className='diceBoard'>
       <div className='diceList'>
-        <button className ="newDice d4" onClick={() => newDice(4)}>d4</button>
-        <button className ="newDice d6" onClick={() => newDice(6)}>d6</button>
-        <button className ="newDice d8" onClick={() => newDice(8)}>d8</button>
-        <button className ="newDice d10" onClick={() => newDice(10)}>d10</button>
-        <button className ="newDice d12" onClick={() => newDice(12)}>d12</button>
-        <button className ="newDice d20" onClick={() => newDice(20)}>d20</button>
+        <button className ="newDice" onClick={() => newDice(4)}><img src={svgArr[0]} alt="d4" /></button>
+        <button className ="newDice" onClick={() => newDice(6)}><img src={svgArr[1]} alt="d6" /></button>
+        <button className ="newDice" onClick={() => newDice(8)}><img src={svgArr[2]} alt="d8" /></button>
+        <button className ="newDice" onClick={() => newDice(10)}><img src={svgArr[3]} alt="d10" /></button>
+        <button className ="newDice" onClick={() => newDice(12)}><img src={svgArr[4]} alt="d12" /></button>
+        <button className ="newDice" onClick={() => newDice(20)}><img src={svgArr[5]} alt="d20" /></button>
       </div>
-      <div>{diceList.map((diceList, index) => (
-          <button className="dice" onClick={() => removeDice(index)}>{diceList}</button>
-      ))}</div>
+      <div className='diceOnTrack'>{diceList.map((diceList, index) => (<div><button className="dice" onClick={() => removeDice(index)}><img src={svgArr[displayDice(diceList)]} alt={diceList} /></button></div>))}</div>
       <div className="diceGraph">
         <XYPlot height={300} width={300}>
           <VerticalGridLines />
@@ -76,11 +84,15 @@ function DiceBoard()  {
         </XYPlot>
       </div>
       <button 
-        className='calculate' 
+        className='bottom-button' 
         onClick={() => setData(calculateGraph())}>
-      Graphe</button>
-      <button className="dice" onClick={() => console.log({data})}>Debug</button>
-
+        <img src={svgArr[6]} alt="graph" />
+      </button>
+      <button 
+        className='bottom-button'
+        onClick={() => setList([])}>
+        <img src={svgArr[7]} alt="graph" />
+      </button>
     </div>
   )
 }
@@ -89,7 +101,6 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>Dice-Stats</p>
       </header>
       <div className="App-body">

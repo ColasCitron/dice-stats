@@ -7,12 +7,6 @@
   pointer-events: none;
 }
 
-/*@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 40s linear;
-  }
-}*/
-
 .App-header {
   background-color: #282c34;
   min-height: 12vh;
@@ -21,7 +15,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #FFFAFF;
 }
 
 .App-body {
@@ -32,19 +26,61 @@
   align-items: stretch;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #FFFAFF;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #00D9FF;
+}
+
+.diceList{
+  display: flex;
+  flex-direction: row;
+  min-height: 10vh;
+  border-radius: 20px;
+}
+
+.diceOnTrack{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 4vh;
+  max-width: 30vh;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.dice{
+  background: none;
+  border: none;
+  color: white;
+  filter: invert(60%);
+  animation: App-logo-spin infinite 5s linear;
+}
+.dice:hover{
+  animation: App-logo-spin-scale infinite 5s linear;
 }
 
 .newDice{
-  background-color: #1C7293;
+  background: none;
+  border: none;
   color: white;
   min-height: 5vh;
-  min-width: 5vh;
-  border-radius: 20px
+}
+.newDice:hover{
+  transform: scale(1.4);
+}
+.newDice:active{
+  animation: App-logo-spin infinite 500ms linear;
+}
+
+.bottom-button{
+  background: #00D9FF;
+  border: none;
+  border-radius: 20px;
+}
+.bottom-button:hover{
+  transform: scale(1.2);  
 }
 
 @keyframes App-logo-spin {
@@ -53,5 +89,14 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin-scale {
+  from {
+    transform: rotate(0deg) scale(0.8);;
+  }
+  to {
+    transform: rotate(0deg) scale(0.8);;
   }
 }
